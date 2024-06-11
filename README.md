@@ -110,5 +110,29 @@ git commit -m "Initial commit"
 git remote add origin https://github.com/yourusername/daily-commit-script.git
 git push -u origin main
 ```
+import ipaddress
 
-Replace `yourusername` with your GitHub username. This will set up your automated daily commit script. If you need further assistance or have other questions, feel free to ask!
+def check_ip_address(ip: str) -> bool:
+    try:
+        # Try to create an IPv4 or IPv6 address object
+        ipaddress.ip_address(ip)
+        return True
+    except ValueError:
+        return False
+
+def main():
+    print("IP Address Validator")
+    while True:
+        ip = input("Enter an IP address (or 'exit' to quit): ")
+        if ip.lower() == 'exit':
+            break
+
+        if check_ip_address(ip):
+            print(f"{ip} is a valid IP address.")
+        else:
+            print(f"{ip} is not a valid IP address.")
+
+if __name__ == "__main__":
+    main()
+
+
